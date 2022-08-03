@@ -33,10 +33,13 @@ h2 {
 
 .playPause {
   margin-top: 10px;
-  background-color: rgb(208, 208, 208);
-  border-radius: 2px;
+  padding: none;
+  /* background-color: rgb(208, 208, 208); */
+  background: none;
+  /* border-radius: 2px; */
   border: none;
   height: 25px;
+  font-size: x-large;
 }
 
 body {
