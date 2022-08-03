@@ -21,6 +21,10 @@ playPause.addEventListener("click", async () => {
 
 // What happens when buzzer is pressed
 buzzerButton.addEventListener("click", async () => {
+  pressBuzzer();
+});
+
+let pressBuzzer = async () => {
   if (buzzerButtonState.pressed) {
     return; 
   }
@@ -33,6 +37,13 @@ buzzerButton.addEventListener("click", async () => {
   });
 
   setTimer(5000);
+}
+
+// Also listen for the spacebar. Press the buzzer when space is pressed
+buzzerButton.addEventListener("keydown", async (event) => {
+  if (event.keyCode === 32) {
+    pressBuzzer();
+  }
 });
 
 // Recursive f'n to set timer lights and reset buzzer state
