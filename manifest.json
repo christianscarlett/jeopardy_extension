@@ -1,7 +1,7 @@
 {
   "name": "Jeopardy Buzzer",
   "description": "Pause jeopardy and see a timer!",
-  "version": "1.0",
+  "version": "0.3.0",
   "manifest_version": 3,
   "background": {
       "service_worker": "background.js"

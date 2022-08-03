@@ -10,7 +10,7 @@ let pressSpacebar = async () => {
   let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 
   chrome.scripting.executeScript({
-    target: { tabId: tab.id, allFrames: true },
+    target: { tabId: tab.id, allFrames: false },
     function: initPress,
   });
 }
@@ -68,5 +68,16 @@ let setSquares = (i, j) => {
 };
 
 let initPress = () => {
-  document.dispatchEvent(new KeyboardEvent('keydown',{'keyCode':'32'}));
+  let element = document.body;
+  let event = new KeyboardEvent('keydown',{
+    'keyCode':'32',
+    'key': ' ',
+    'code': 'Space',
+    'target': document.body,
+    bubbles: true,
+    cancelable: true,
+    composed: true,
+    view: window,
+  });
+  element.dispatchEvent(event);
 };
