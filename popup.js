@@ -2,21 +2,22 @@ let buzzerButton = document.getElementById("buzzerButton");
 let squares = Array.from(Array(9).keys()).map(id => document.getElementById("ts" + id));
 let playPause = document.getElementById("playPause");
 
-
 let buzzerButtonState = {
   pressed: false
 };
 
-// Allow play/pause to play and pause the video
-playPause.addEventListener("click", async () => {
-  console.log(playPause);
+let pressSpacebar = async () => {
   let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 
   chrome.scripting.executeScript({
     target: { tabId: tab.id, allFrames: true },
     function: initPress,
   });
+}
 
+// Allow play/pause to play and pause the video
+playPause.addEventListener("click", async () => {
+  pressSpacebar();
 });
 
 // What happens when buzzer is pressed
@@ -29,22 +30,17 @@ let pressBuzzer = async () => {
     return; 
   }
   buzzerButtonState.pressed = true;
-  let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-
-  chrome.scripting.executeScript({
-    target: { tabId: tab.id, allFrames: true },
-    function: initPress,
-  });
-
+  pressSpacebar();
   setTimer(5000);
 }
 
-// Also listen for the spacebar. Press the buzzer when space is pressed
-buzzerButton.addEventListener("keydown", async (event) => {
-  if (event.keyCode === 32) {
-    pressBuzzer();
-  }
-});
+// Not sure this actually works
+// // Also listen for the spacebar. Press the buzzer when space is pressed
+// buzzerButton.addEventListener("keydown", async (event) => {
+//   if (event.keyCode === 32) {
+//     pressBuzzer();
+//   }
+// });
 
 // Recursive f'n to set timer lights and reset buzzer state
 let setTimer = (timeLeft) => {
