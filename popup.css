@@ -13,11 +13,11 @@ h2 {
   margin-bottom: 20px;
   border: black;
   border-radius: 100%;
-  background-color: red;
+  background-color: rgb(255, 41, 41);
 }
 
 .buzzer:active {
-  background-color: black;
+  background-color: rgb(121, 0, 0);
 }
 
 .timerSquares {
@@ -27,26 +27,27 @@ h2 {
 .timerSquare {
   height: 10px;
   width: 20px;
-  border: 2px solid rgb(208, 208, 208);
+  border: 2px solid;
   background-color: black;
 }
 
 .playPause {
   margin-top: 10px;
-  padding: none;
-  /* background-color: rgb(208, 208, 208); */
   background: none;
-  /* border-radius: 2px; */
   border: none;
-  height: 25px;
-  font-size: x-large;
+  border-radius: 4px;
+  background-color: rgb(208, 208, 208);
+}
+
+.playPause:active {
+  background-color: rgb(128, 128, 128);
 }
 
 body {
   margin: 0;
   padding: 6px;
   color: rgb(208, 208, 208);
-  background-color: #7a5230;
+  background-color: rgb(208, 208, 208);
 }
 
 .content {
